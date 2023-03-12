@@ -1,0 +1,17 @@
+
+.appStyles {
+   color: rgb(100, 109, 239);
+}
+
+h1 {
+    background-color: transparent;
+
+}
+
+.weatherData {
+    background-color: rgb(136, 232, 200);
+}
+
+.truth{
+    color: black;
+}

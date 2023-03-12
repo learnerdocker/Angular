@@ -1,0 +1,66 @@
+<div  class="appStyles" > 
+    <div class="border border-primary p-3 mb-2 bg-success text-white">
+      <!-- [ngStyle]="{'margin': 'auto', 'padding':'5px', 'backgroundColor': 'skyblue','color':'purple'}" -->
+      <h1 >
+      NSKT LLC 
+      </h1>
+      <h5 #TagLine>Chase your dreams! We will help you to achive your dreams by providing great support!</h5>
+    </div>
+    <div [ngStyle]="{'position':'absolute','top':'10px','right': '10px', 'color':'black'}" > 
+        <i *ngIf="isTime; else displayTimeMsg">Time : {{currentTime}}</i> 
+      
+        <ng-template #displayTimeMsg>
+          <i>Time is loading...</i> 
+        </ng-template>
+    </div>
+    
+      <!-- <p>Total user: {{users.length}}</p> -->
+    
+    <!-- <div *ngIf="users.length() != 0; else nousers"> -->
+      <div>
+    <div class="text-white bg-dark">Registered Users</div>
+      <div *ngIf="users.length; else noUsers">
+        <ul >
+          <li *ngFor="let user of users" [ngStyle]="{'margin':'auto', 'padding': '2px'}" >
+            <div  class='truth' >{{user.name}}
+              <!-- <div class='falsyColor' *ngIf="user.checked == false" [innerHTML]="user.checked | setChecked"></div> 
+              <div class='truthy' *ngIf="user.checked == true" [innerHTML]="user.checked | setChecked"></div>  -->
+              <div [ngStyle]="{'margin':'auto','display': 'inline'}" class='falsyColor' [hidden]="user.checked == false" [innerHTML]="user.checked | setChecked"></div> 
+              <div  [ngStyle]="{'margin':'auto','display': 'inline'}"class='truthy' [hidden]="user.checked == true" [innerHTML]="user.checked | setChecked"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+  
+      <ng-template #noUsers>
+        <p class="text-warning">No registered yet.</p>
+      </ng-template> 
+  
+    <div [ngStyle]="{'margin': 'auto'}">
+      <button *ngIf = "users.length" type="button" (click)="toggleHandler($event)" > Toggle Checked/Unchecked </button>
+    </div>
+    <br/>
+    <div>
+      <app-add-user #add (AddedUser)="addUser($event)"></app-add-user>
+      <!-- <app-add-user #adduser ></app-add-user> -->
+      <p *ngIf="add.user.name!=''">Last user added : {{add.user.name}}</p>
+    </div>
+    <br/>
+    <h3 class="weatherData" style="background-color: rgba(0, 0, 0, 0.442); color:white">Weather Data</h3>
+    <p [ngStyle]="{'background-color': 'black', 'color':'white'}"> <weather-data></weather-data></p>
+    <!-- TEST content -->
+    <test-component message={{appMessage}}></test-component>
+    <!-- <div test-component message="{{appMessage}}" ></div> -->
+    <!-- <div class="test-component" message="{{appMessage}}"></div> -->
+    <div>
+      <!-- {{ parentMessage }} -->
+      <!-- <test-component (changeTextChild)="changeText($event)" message="{{ parentMessage }}"> </test-component> -->
+      <app-child buttonText = "{{appMessage}}" (changeTextChild)="changeText($event)"></app-child>
+    </div>
+  </div>
+  
+  <div class="card">
+    <app-template-demo #templateDemo></app-template-demo>
+    <!-- <br/> -->
+    <p>{{templateDemo.lastValue}}</p>
+  </div>

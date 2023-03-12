@@ -1,0 +1,15 @@
+<div>
+    <h5>Template Demo</h5>
+    <!-- (keyup)="0" (change)="onChangeHandler($event)"-->
+    <input type="text" #myInput (keyup)="0"  (change)="onChangeHandler(myInput.value)">
+    <!-- <button type="button" (click)="clickHandler(myInput.value)">Update value</button> -->
+</div>
+
+<p [ngStyle]="{'backgroundColor':'beige'}" *ngIf="myInput.value != ''; else loading"></p>
+<ng-template #loading>
+    <p [ngStyle]="{'backgroundColor':'skyblue', 'margin':'auto', 'padding':'auto'}"> 
+        This section of data gets replaced once something is entered into the above filed.
+    </p>
+</ng-template>
+    
+

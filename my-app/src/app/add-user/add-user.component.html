@@ -1,0 +1,9 @@
+<div class="p-3 mb-2 bg-secondary text-white" >
+    Enter user name: <input type="text" #userName>
+    <p [ngStyle]="{'color':'orange'}" *ngIf="userName.value == ''">Enter a name</p>
+    Select one: <select #selected>
+        <option> True </option>
+        <option> False </option>
+    </select>
+    <button (click)="onClickHandler([userName.value, selected.value])">Add User</button>
+</div>
